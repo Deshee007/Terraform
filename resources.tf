@@ -4,9 +4,16 @@ resource "github_repository" "test_repo" {
   description = "Terraform IaC provisioning"
 }
 
+variable "region" {
+  default = "us-east-1"
+}
 resource "aws_instance" "test_ec2" {
   instance_type = "t2.micro"
-  ami           = "ami-0aa7d40eeae50c9a9"
+  count         = 2
+  ami           = lookup(var.ami, var.region)
+  tags = {
+    Name = element(var.ec2name, count.index)
+  }
 }
 
 resource "aws_security_group" "sg_test" {
