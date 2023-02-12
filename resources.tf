@@ -29,4 +29,15 @@ resource "aws_security_group" "sg_test" {
       cidr_blocks = [var.ip_range]
     }
   }
+
+  dynamic "egress" {
+    for_each = var.sg_ports
+
+    content {
+      from_port   = egress.value
+      to_port     = egress.value
+      protocol    = "tcp"
+      cidr_blocks = [var.ip_range]
+    }
+  }
 }
