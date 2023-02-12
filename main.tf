@@ -16,5 +16,17 @@ provider "aws" {
   region = "us-east-1"
 }
 
-provider "github" {
+data "aws_ami" "ec_ami" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+
 }
+
+# provider "github" {
+# }
+
