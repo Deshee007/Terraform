@@ -20,5 +20,5 @@ variable "region" {
 
 variable "sg_ports" {
   type    = list(number)
-  default = [8080, 8081, 3000, 5000]
+  default = [22, 8080, 8081, 3000, 5000]
 }
