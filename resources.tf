@@ -4,7 +4,7 @@
 #   description = "Terraform IaC provisioning"
 # }
 
-resource "aws_instance" "test_ec2" {
+resource "aws_instance" "myec2" {
   instance_type          = "t2.micro"
   count                  = 2
   ami                    = data.aws_ami.ec_ami.id

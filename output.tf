@@ -3,5 +3,5 @@ output "sg_test" {
 }
 
 output "ami_id" {
-  value = aws_instance.test_ec2[*].ami
+  value = aws_instance.myec2[*].ami
 }
